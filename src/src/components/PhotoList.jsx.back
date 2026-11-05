@@ -1,0 +1,22 @@
+function PhotoList({ photos, onEdit, onDelete }) {
+  return (
+    <ul className="photo-list">
+      {photos.map((photo) => (
+        <li key={photo.id} className="photo-item">
+          <div className="photo-info">
+            <h3>{photo.title || 'Untitled'}</h3>
+            <p className="photo-filename">📁 {photo.filename}</p>
+            <p className="photo-description">{photo.description}</p>
+            <small>Added: {new Date(photo.created_at).toLocaleDateString()}</small>
+          </div>
+          <div className="photo-actions">
+            <button className="btn-edit" onClick={() => onEdit(photo)}>Edit</button>
+            <button className="btn-delete" onClick={() => onDelete(photo.id)}>Delete</button>
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export default PhotoList;
